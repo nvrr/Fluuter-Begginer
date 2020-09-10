@@ -18,10 +18,38 @@ class _QuoteListState extends State<QuoteList> {
 
   
 List<Quote> quotes = [
-  Quote(text: "dogs on the way bow bow", author: "gram"),
-  Quote(text: "cats on the way meow meow", author: "nigraham"),
-  Quote(text: "rats on the way cheek cheek", author: "whatson")
+  Quote(text: "dogs on the way bow bow", author: "--gram"),
+  Quote(text: "cats on the way meow meow", author: "--nigraham"),
+  Quote(text: "rats on the way cheek cheek", author: "--whatson")
 ];
+
+Widget quoteTemplate(quote) {
+  return Card(
+    margin: EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0.0),
+    child: Padding(
+      padding: const EdgeInsets.all(12.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+          Text(quote.text,
+          style: TextStyle(
+            fontSize: 18.0,
+            fontWeight: FontWeight.bold,
+            color: Colors.grey[800] 
+          )
+          ),
+          Text(quote.author,
+          style: TextStyle(
+            fontSize: 14.0,
+            fontWeight: FontWeight.bold,
+            color: Colors.grey[500]
+          )
+          )
+        
+        ],),
+    )
+  );
+}
 
   @override
   Widget build(BuildContext context) {
@@ -34,8 +62,10 @@ List<Quote> quotes = [
       ),
 
       body: Column(
-        children: quotes.map((quote) => Text("${quote.text} -${quote.author}")).toList()
+        children: quotes.map((quote) => 
+          quoteTemplate(quote)).toList()
         ),
-    );
+      );
+    
   }
 }
