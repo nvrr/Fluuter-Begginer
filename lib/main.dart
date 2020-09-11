@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'quotes.dart';
+import 'quote.dart';
+import 'quote_card.dart';
 
 void main() => runApp(MaterialApp(
   
@@ -23,33 +24,7 @@ List<Quote> quotes = [
   Quote(text: "rats on the way cheek cheek", author: "--whatson")
 ];
 
-Widget quoteTemplate(quote) {
-  return Card(
-    margin: EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0.0),
-    child: Padding(
-      padding: const EdgeInsets.all(12.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          Text(quote.text,
-          style: TextStyle(
-            fontSize: 18.0,
-            fontWeight: FontWeight.bold,
-            color: Colors.grey[800] 
-          )
-          ),
-          Text(quote.author,
-          style: TextStyle(
-            fontSize: 14.0,
-            fontWeight: FontWeight.bold,
-            color: Colors.grey[500]
-          )
-          )
-        
-        ],),
-    )
-  );
-}
+
 
   @override
   Widget build(BuildContext context) {
@@ -63,9 +38,10 @@ Widget quoteTemplate(quote) {
 
       body: Column(
         children: quotes.map((quote) => 
-          quoteTemplate(quote)).toList()
+          QuoteCard(quote: quote)).toList()
         ),
       );
     
   }
 }
+
