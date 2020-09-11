@@ -25,7 +25,6 @@ List<Quote> quotes = [
 ];
 
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,11 +36,16 @@ List<Quote> quotes = [
       ),
 
       body: Column(
-        children: quotes.map((quote) => 
-          QuoteCard(quote: quote)).toList()
+        children: quotes.map((quote) => QuoteCard(
+          quote: quote,
+          delete: () {
+            setState(() {
+              quotes.remove(quote);
+            });
+          }
+          )).toList()
         ),
       );
     
   }
 }
-
